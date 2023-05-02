@@ -1,8 +1,25 @@
-import './App.css'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header";
+import LandingPage from "./pages/LandingPage";
+import SpamPage from "./pages/SpamPage";
+import TrashPage from "./pages/TrashPage";
 
 function App() {
-
-  return 
+  return (
+    <React.Fragment>
+      <h1 className="heading">Shubh Arya's mail box</h1>
+      <div className="parent">
+        <Header />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/spam" element={<SpamPage />} />
+          <Route path="/trash" element={<TrashPage />} />
+        </Routes>
+      </div>
+    </React.Fragment>
+  );
 }
 
-export default App
+export default App;
