@@ -35,3 +35,22 @@
   padding-inline-end: 0em;
   padding-block-end: 0em; */
 }
+
+.email-item{
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-star{
+  display: flex;
+  flex-direction: column;
+}
+
+.is-star{
+  align-self: flex-end;
+}
+
+.buttons{
+  align-self: flex-end;
+}
