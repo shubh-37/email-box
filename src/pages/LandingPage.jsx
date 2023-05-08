@@ -5,13 +5,12 @@ import Filters from "../components/Filters";
 import { mailContext } from "../contexts/MailProvider";
 
 export default function LandingPage() {
-  const { state } = useContext(mailContext);
-
+  const { displayData } = useContext(mailContext);
   return (
     <React.Fragment>
       <Filters />
       <ul>
-        {state.mails.map((mail) => (
+        {displayData?.map((mail) => (
           <DisplayMail mail={mail} detail={true} />
         ))}
       </ul>
