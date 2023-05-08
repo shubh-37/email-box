@@ -71,17 +71,26 @@ const mails = [
 export default function MailProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, {
     mails: mails,
-    checkBoxes: [],
+    isStarredFilter: false,
+    unreadFilter: false,
     spam: [],
     bin: [],
   });
 
-  // function isStarred(val) {
-  //   state.checkBoxes.includes(val) ?
-  // }
+  const displayData = (() => {
+    const { mails, isStarredFilter, unreadFilter } = state;
+    let finalMails = [];
+    if (!unreadFilter && !isStarredFilter){
+      finalMails = mails;
+    }else if(unreadFilter){
+      finalMails = isStarredFilter ? mails.filter((mail) => mail.isStarred && mail.unread) : mails.filter((mail)=> mail.unread)
+    }else{
+      finalMails = mails.filter((mail)=> mail.isStarred);
+    }
+    return finalMails;
+  })();
 
   function reducer(state, action) {
-    console.log(action, state);
     switch (action.type) {
       case "STAR": {
         const updatedMails = state.mails.reduce(
@@ -125,7 +134,14 @@ export default function MailProvider({ children }) {
           mails: [...updatedMails],
         };
       }
+      case "FILTER": {
+        const selectedFilter = `${action.payload}Filter`;
+        return {
+          ...state,
+          [selectedFilter]: !state[selectedFilter]
+        }
+      }
     }
   }
-  return <mailContext.Provider value={{ state, dispatch }}>{children}</mailContext.Provider>;
+  return <mailContext.Provider value={{ state, dispatch, displayData }}>{children}</mailContext.Provider>;
 }
