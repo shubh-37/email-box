@@ -30,16 +30,31 @@
 
 .filter-box{
   width: 93%;
+  margin-left: 3rem;
   /* padding-block-start: 0em;
   padding-inline-start: 0em;
   padding-inline-end: 0em;
   padding-block-end: 0em; */
 }
 
+.email-list{
+  display: flex;
+  flex-direction: column;
+}
+
 .email-item{
   list-style-type: none;
   display: flex;
   flex-direction: column;
+  border: 1px solid;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  flex-grow: 1;
+}
+
+.email-item:hover{
+  transition: 300ms;
+  box-shadow: 2px 2px 8px 2px #888888;
 }
 
 .sub-star{
@@ -53,4 +68,25 @@
 
 .buttons{
   align-self: flex-end;
+}
+
+.sub-parent{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.child-1{
+  flex-grow: 1;
+}
+
+.child-2{
+  flex-grow: 1;
+}
+
+button{
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
 }
