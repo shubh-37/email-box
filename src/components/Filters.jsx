@@ -6,6 +6,7 @@ export default function Filters() {
   const {dispatch, state: { isStarredFilter, unreadFilter }} = useContext(mailContext);
   return (
     <React.Fragment>
+      <div className="child-1">
       <fieldset className="filter-box">
         <legend>Filters</legend>
         <label>
@@ -17,6 +18,7 @@ export default function Filters() {
           Show starred emails
         </label>
       </fieldset>
+      </div>
     </React.Fragment>
   );
 }
