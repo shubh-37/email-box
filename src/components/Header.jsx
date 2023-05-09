@@ -5,8 +5,12 @@ export default function Header(){
     function getActiveStyle({ isActive } ) {
         return {
             textDecoration: "none",
-            color: isActive ? "red" : "gray",
+            color: isActive ? "#7f1d1d" : "white",
             borderRight: isActive ? "4px solid blue" : "",
+            backgroundColor: isActive ? "#a3a3a3" : "",
+            borderRadius: isActive ? "0.5rem 0rem 0rem 0.5rem": "",
+            margin: '0rem 2rem',
+            fontSize: "1.2rem"
         }
     }
     return (
