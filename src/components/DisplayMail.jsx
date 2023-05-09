@@ -14,14 +14,14 @@ export default function DisplayMail({ mail, detail }) {
       <div className="sub-star">
         <h2>Subject: {subject}</h2>
         {detail ? (
-          <button onClick={() => dispatch({ type: "STAR", payload: mId })} className="is-star">
+          <button style = {{backgroundColor: isStarred ? "greenyellow": "yellow" }}onClick={() => dispatch({ type: "STAR", payload: mId })} className="is-star">
             {isStarred ? "Unstar" : "Star"}
           </button>
         ) : (
           <></>
         )}
       </div>
-      <p>{content}</p>
+      <p>{content.length > 70 ? `${content.substring(0,71)}...` : content}</p>
       {detail ? (
         <Link to={`/email/${mId}`}>
           <button>View Details</button>
@@ -31,11 +31,11 @@ export default function DisplayMail({ mail, detail }) {
       )}
       {detail ? (
         <div className="buttons">
-          <button onClick={() => onDeleteHandler(mId)}>Delete</button>
-          <button onClick={() => dispatch({ type: "READ", payload: mId })}>
+          <button style ={{margin: "0.4rem"}} onClick={() => onDeleteHandler(mId)}>Delete</button>
+          <button style ={{margin: "0.4rem", backgroundColor: !unread ? "lightgreen": ""}} onClick={() => dispatch({ type: "READ", payload: mId })}>
             {unread ? "Mark as Read" : "Mark as Unread"}
           </button>
-          <button onClick={() => dispatch({ type: "SPAM", payload: mId })}>
+          <button style ={{margin: "0.4rem", backgroundColor: isSpam ? "red": "", color: isSpam ? "white" : ""}} onClick={() => dispatch({ type: "SPAM", payload: mId })}>
             {isSpam ? "Spam Reported" : "Report Spam"}
           </button>
         </div>
