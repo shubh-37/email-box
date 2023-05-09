@@ -8,12 +8,16 @@ export default function LandingPage() {
   const { displayData } = useContext(mailContext);
   return (
     <React.Fragment>
+      <div className="sub-parent">
       <Filters />
-      <ul>
+      <div className="child-2">
+      <ul className="email-list">
         {displayData?.map((mail) => (
           <DisplayMail mail={mail} detail={true} />
         ))}
       </ul>
+      </div>
+      </div>
     </React.Fragment>
   );
 }
