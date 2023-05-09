@@ -7,8 +7,7 @@ export default function TrashPage() {
   const { state } = useContext(mailContext);
   return (
     <React.Fragment>
-      <h1>This is the trash page</h1>
-      <p>{state.bin.length=== 0 ? "There are no deleted emails" : <></>}</p>
+      <h3>{state.bin.length=== 0 ? "There are no deleted emails" : <></>}</h3>
       <ul>
         {state.bin.map((mail) => (
           <DisplayMail mail={mail} detail={false} />

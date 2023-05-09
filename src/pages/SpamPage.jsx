@@ -7,8 +7,7 @@ export default function SpamPage() {
   const { state } = useContext(mailContext);
   return (
     <React.Fragment>
-      <h1>This is the spam page</h1>
-      <p>{state.spam.length === 0 ? "There are no spam emails" : <></>}</p>
+      <h3>{state.spam.length === 0 ? "There are no spam emails" : <></>}</h3>
       <ul>
         {state.spam.map((mail) => (
           <DisplayMail mail={mail} detail={false} />
