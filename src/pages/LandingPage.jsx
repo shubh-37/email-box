@@ -9,14 +9,14 @@ export default function LandingPage() {
   return (
     <React.Fragment>
       <div className="sub-parent">
-      <Filters />
-      <div className="child-2">
-      <ul className="email-list">
-        {displayData?.map((mail) => (
-          <DisplayMail mail={mail} detail={true} />
-        ))}
-      </ul>
-      </div>
+        <Filters />
+        <div className="child-2">
+          <ul className="email-list">
+            {displayData?.map((mail) => (
+              <DisplayMail mail={mail} detail={true} />
+            ))}
+          </ul>
+        </div>
       </div>
     </React.Fragment>
   );
