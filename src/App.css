@@ -1,11 +1,12 @@
 body{
   margin: 0px;
+  background-color: #0ea5e9;
+  color: aliceblue;
 }
 #root{
   display: flex;
   flex-direction: column;
-  background-color: #0ea5e9;
-  color: aliceblue;
+ 
 }
 .heading{
   text-align: center;
