@@ -75,6 +75,7 @@ export default function MailProvider({ children }) {
     unreadFilter: false,
     spam: [],
     bin: [],
+    searchBar: ""
   });
 
   const displayData = (() => {
@@ -89,6 +90,8 @@ export default function MailProvider({ children }) {
     }
     return finalMails;
   })();
+
+  const renderData = state.searchBar.length > 0 ? displayData.filter(({subject}) => subject.toLowerCase().includes(state.searchBar.toLowerCase())) : displayData;
 
   function reducer(state, action) {
     switch (action.type) {
@@ -141,7 +144,15 @@ export default function MailProvider({ children }) {
           [selectedFilter]: !state[selectedFilter]
         }
       }
+      case "SEARCH": return {
+        ...state,
+        searchBar: action.payload
+      }
     }
   }
-  return <mailContext.Provider value={{ state, dispatch, displayData }}>{children}</mailContext.Provider>;
+
+  function searchHandler(e){
+    dispatch({type: "SEARCH", payload: e.target.value});
+  }
+  return <mailContext.Provider value={{ state, dispatch, renderData, searchHandler }}>{children}</mailContext.Provider>;
 }
